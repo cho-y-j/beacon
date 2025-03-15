@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 248, 250, 252;
+  --background-end-rgb: 255, 255, 255;
+  --primary-color: 37, 99, 235;
+  --secondary-color: 79, 70, 229;
+  --accent-color: 217, 70, 239;
+  --success-color: 16, 185, 129;
+  --warning-color: 245, 158, 11;
+  --error-color: 239, 68, 68;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md;
+  }
+  
+  .btn-secondary {
+    @apply bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md;
+  }
+  
+  .btn-outline {
+    @apply border border-gray-300 hover:bg-gray-100 text-gray-700 font-medium py-2 px-4 rounded-md;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md p-4;
+  }
+  
+  .input-field {
+    @apply border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-blue {
+    @apply bg-blue-100 text-blue-800;
+  }
+  
+  .badge-green {
+    @apply bg-green-100 text-green-800;
+  }
+  
+  .badge-yellow {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+  
+  .badge-red {
+    @apply bg-red-100 text-red-800;
+  }
+  
+  .badge-purple {
+    @apply bg-purple-100 text-purple-800;
+  }
+}
