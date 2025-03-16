@@ -22,6 +22,8 @@ import PersonIcon from '@mui/icons-material/Person';
 import GroupIcon from '@mui/icons-material/Group';
 import CampaignIcon from '@mui/icons-material/Campaign';
 import TimelineIcon from '@mui/icons-material/Timeline';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import { useRouter } from 'next/navigation';
 
 // Material UI 테마 생성
 const theme = createTheme({
@@ -90,6 +92,7 @@ export default function CustomerManagement() {
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [customers, setCustomers] = useState(mockCustomers);
   const [activeTab, setActiveTab] = useState(0);
+  const router = useRouter();
 
   // 고객 추가/수정 다이얼로그 열기
   const handleOpenDialog = (customer = null) => {
@@ -165,9 +168,42 @@ export default function CustomerManagement() {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ p: 3 }}>
-        <Typography variant="h4" gutterBottom>
-          고객 관리
-        </Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+          <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold' }}>
+            고객 관리
+          </Typography>
+          <Box sx={{ display: 'flex', gap: 2 }}>
+            <Button
+              variant="outlined"
+              startIcon={<DashboardIcon />}
+              onClick={() => router.push('/admin')}
+              sx={{ 
+                color: 'primary.main',
+                borderColor: 'primary.main',
+                '&:hover': {
+                  borderColor: 'primary.dark',
+                  backgroundColor: 'primary.light',
+                  color: 'primary.dark'
+                }
+              }}
+            >
+              대시보드로 이동
+            </Button>
+            <Button
+              variant="contained"
+              startIcon={<AddIcon />}
+              onClick={handleOpenDialog}
+              sx={{ 
+                backgroundColor: 'primary.main',
+                '&:hover': {
+                  backgroundColor: 'primary.dark'
+                }
+              }}
+            >
+              고객 추가
+            </Button>
+          </Box>
+        </Box>
 
         {/* 네비게이션 탭 */}
         <Paper sx={{ mb: 3 }}>
